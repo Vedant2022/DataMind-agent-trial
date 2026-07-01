@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🤖 DataMind — Business Intelligence Dashboard")
+st.title("🤖 DataMind — An Autonomous Data Intelligence Agent")
 st.markdown("*Autonomous data intelligence for your business*")
 st.divider()
 
