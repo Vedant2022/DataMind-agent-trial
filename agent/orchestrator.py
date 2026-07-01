@@ -99,7 +99,8 @@ User question: {user_query}
 
 if __name__ == "__main__":
     print("🤖 DataMind Agent ready\n")
-    question = "Which region is performing best and which products should we restock?"
+    question = input("Ask your question: ")
+    # question = "Which region is performing best and which products should we restock?"
     print(f"Question: {question}\n")
     print("Answer:")
     print(ask_agent(question))
