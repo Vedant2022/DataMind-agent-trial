@@ -11,3 +11,14 @@
 # All data pulling live from SQLite database.
 
 # Dashboard will expand further as the complete prototype develops.
+
+# **Day 4** - Chat Interface
+# Built conversational interface — ask any question, get live answer.
+
+# Also Includes:
+# Suggested Questions buttons
+
+# Currently responds only textual data but later an implementation will be tried where responses are both graphical and textual.
+
+# This Chat feature will be later available integrated within the dasshboard
+
