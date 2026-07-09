@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 import streamlit as st
 import pandas as pd
@@ -113,7 +113,7 @@ st.divider()
 # Top Products
 st.subheader("Top 5 Products by Revenue")
 products_df = get_top_products()
-st.dataframe(products_df, use_container_width=True, hide_index=True)
+st.dataframe(products_df, width='stretch', hide_index=True)
 
 st.divider()
 
@@ -121,6 +121,6 @@ st.divider()
 st.subheader("🔴 Inventory Alerts")
 alerts_df = get_inventory_alerts()
 if len(alerts_df) > 0:
-    st.dataframe(alerts_df, use_container_width=True, hide_index=True)
+    st.dataframe(alerts_df, width='stretch', hide_index=True)
 else:
     st.success("All inventory levels are healthy")
