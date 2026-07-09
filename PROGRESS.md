@@ -22,3 +22,8 @@
 
 # This Chat feature will be later available integrated within the dasshboard
 
+## **Day 5** — Wire Everything Together (The Prototype)                                          Combined dashboard and chat into one professional multi-page Streamlit app.
+
+### How it works                                           Single command launches everything               Streamlit's native multi-page system handles routing automatically.                                          Each page fully isolated — no import conflicts, no state issues.
+
+
