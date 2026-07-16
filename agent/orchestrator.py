@@ -39,8 +39,8 @@ def get_sales_summary():
         SELECT 
             region,
             COUNT(*) as total_orders,
-            ROUND(SUM(revenue), 2) as total_revenue,
-            ROUND(AVG(revenue), 2) as avg_order_value
+            ROUND(SUM(revenue)::numeric,2) as total_revenue,
+            ROUND(AVG(revenue)::numeric,2) as avg_order_value
         FROM sales
         GROUP BY region
         ORDER BY total_revenue DESC
@@ -52,9 +52,9 @@ def get_top_products():
             product,
             category,
             COUNT(*) as times_sold,
-            ROUND(SUM(revenue), 2) as total_revenue
+            ROUND(SUM(revenue)::numeric,2) as total_revenue
         FROM sales
-        GROUP BY product
+        GROUP BY product, category
         ORDER BY total_revenue DESC
         LIMIT 5
     """)
