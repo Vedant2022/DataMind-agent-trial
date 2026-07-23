@@ -27,3 +27,21 @@
 ### How it works                                           Single command launches everything               Streamlit's native multi-page system handles routing automatically.                                          Each page fully isolated — no import conflicts, no state issues.
 
 
+## Deployment — Live on Internet (Complete)
+DataMind V1 is live and publicly accessible.
+
+### Infrastructure
+- App hosting: Render (free tier)
+- Database: Supabase PostgreSQL (free tier)
+- CI/CD: GitHub → Render auto-deploy on push
+- Branch: merged into main
+
+### What's live
+- Password protected access
+- Live KPI dashboard with Plotly charts
+- AI chat interface powered by Anthropic Claude API
+- Cloud PostgreSQL database via Supabase
+- Professional multi-page Streamlit application
+
+### URL
+https://datamind-agent-ahdt.onrender.com
