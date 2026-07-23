@@ -48,7 +48,7 @@ with st.sidebar:
     st.divider()
     page = st.radio(
         "Navigate",
-        ["📊 Dashboard", "💬 Chat with your data"],
+        ["Dashboard", "Chat with your data"],
         label_visibility="collapsed"
     )
     st.divider()
@@ -60,9 +60,12 @@ with st.sidebar:
         st.rerun()
 
 # ── ROUTING ──
-if page == "📊 Dashboard":
-    from app.pages import Dashboard
+import importlib.util
+import sys
+sys.path.insert(0, '/home/vedantroot/projects/datamind-agent')
+if page == "Dashboard":
+    from app import _Dashboard as Dashboard
     Dashboard.show()
-elif page == "💬 Chat with your data":
-    from app.pages import Chat
+elif page == "Chat with your data":
+    from app import _Chat as Chat
     Chat.show()
