@@ -4,6 +4,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 from sqlalchemy import text
 from database.connection import engine
 
@@ -93,12 +94,31 @@ def show():
     with col1:
         st.subheader("Revenue by Region")
         region_df = get_revenue_by_region()
-        st.bar_chart(region_df.set_index("region")["total_revenue"])
-
+        fig = px.bar(
+        region_df,
+        x="region",
+        y="total_revenue",
+        title="Revenue by Region",
+        labels={"region": "Region", "total_revenue": "Total Revenue (£)"},
+        color="total_revenue",
+        color_continuous_scale="blues"
+)
+    fig.update_layout(showlegend=False, coloraxis_showscale=False)
+    st.plotly_chart(fig, use_container_width=True)
+    
+    
     with col2:
         st.subheader("Monthly Revenue Trend")
         monthly_df = get_monthly_revenue()
-        st.line_chart(monthly_df.set_index("month")["revenue"])
+        fig2 = px.line(
+        monthly_df,
+        x="month",
+        y="revenue",
+        title="Monthly Revenue Trend",
+        labels={"month": "Month", "revenue": "Revenue (£)"},
+        markers=True
+)
+        st.plotly_chart(fig2, use_container_width=True)
 
     st.divider()
 
