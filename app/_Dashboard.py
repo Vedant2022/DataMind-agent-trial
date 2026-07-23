@@ -14,7 +14,7 @@ def show():
 
     def get_kpis():
         with engine.connect() as conn:
-            total_revenue = conn.execute(text("SELECT ROUND(SUM(revenue),2) FROM sales")).scalar()
+            total_revenue = conn.execute(text("SELECT ROUND(SUM(revenue)::numeric,2) FROM sales")).scalar()
             total_orders = conn.execute(text("SELECT COUNT(*) FROM sales")).scalar()
             top_region = conn.execute(text("""
                 SELECT region FROM sales 
@@ -32,7 +32,7 @@ def show():
         with engine.connect() as conn:
             result = conn.execute(text("""
                 SELECT region, 
-                       ROUND(SUM(revenue),2) as total_revenue,
+                       ROUND(SUM(revenue)::numeric,2) as total_revenue,
                        COUNT(*) as total_orders
                 FROM sales
                 GROUP BY region
@@ -45,9 +45,9 @@ def show():
             result = conn.execute(text("""
                 SELECT product, category,
                        COUNT(*) as times_sold,
-                       ROUND(SUM(revenue),2) as total_revenue
+                       ROUND(SUM(revenue)::numeric,2) as total_revenue
                 FROM sales
-                GROUP BY product
+                GROUP BY product, category
                 ORDER BY total_revenue DESC
                 LIMIT 5
             """))
@@ -67,8 +67,8 @@ def show():
     def get_monthly_revenue():
         with engine.connect() as conn:
             result = conn.execute(text("""
-                SELECT strftime('%Y-%m', date) as month,
-                       ROUND(SUM(revenue),2) as revenue
+                SELECT to_char(date, 'YYYY-MM') as month,
+                       ROUND(SUM(revenue)::numeric,2) as revenue
                 FROM sales
                 GROUP BY month
                 ORDER BY month
